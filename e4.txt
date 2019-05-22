@@ -1,0 +1,57 @@
+Select codins,monto
+From financia xf
+Order By codins
+
+Select codins,Sum(monto)
+From financia xf
+Group By codins
+
+Select xif.razonsocial,tmp.montofinan
+From inst_finan xif, (Select codins,Sum(monto) montofinan
+					From financia xf
+					Group By codins) tmp
+Where xif.codins = tmp.codins
+Order By xif.razonsocial
+
+
+Select codins,Sum(monto)
+From financia xf
+Group By codins
+
+Select Min(Sum(monto))
+From financia xf
+Group By codins
+
+Select ifx.razonsocial,tmp.montofinan
+From inst_finan ifx, (Select codins,Sum(monto) montofinan
+					  From financia xf
+					  Having Sum(monto) = (Select Min(Sum(monto))
+				     					   From financia xf
+					 					   Group By codins)
+					  Group By codins) tmp
+Where ifx.codins = tmp.codins
+
+
+Select ci_jefe
+From departamento xd 
+
+Select xd.ci_jefe,xde.parentesco
+From departamento xd, dependiente xde
+Where xd.ci_jefe = xde.ci 
+And parentesco like 'HIJ%'
+Order By xd.ci_jefe
+
+Select xd.ci_jefe,Count(*)
+From departamento xd, dependiente xde
+Where xd.ci_jefe = xde.ci 
+And parentesco like 'HIJ%'
+Group By xd.ci_jefe
+
+Select xi.apellido,xi.nombre,tmp.nrohijos
+From Investigador xi,(Select xd.ci_jefe,Count(*) nrohijos
+						From departamento xd, dependiente xde
+					Where xd.ci_jefe = xde.ci 
+					And parentesco like 'HIJ%'
+					Group By xd.ci_jefe) tmp
+Where xi.ci = tmp.ci_jefe
+Order By xi.apellido
