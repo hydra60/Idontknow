@@ -1,0 +1,15 @@
+servidor gratuito
+usr=hydra606340@gmail.com
+pass=hydra680
+ 
+https://databases.000webhost.com   //adm de la DB
+https://www.000webhost.com/members/website/sexological-departm/build //adm de la pagina
+https://www.000webhost.com/members/website/list //adm del server
+
+
+//css tablas	
+http://www.mclibre.org/consultar/htmlcss/css/css-tablas-modos-bordes.html
+
+website
+us:labWeb
+ps:hydra680
